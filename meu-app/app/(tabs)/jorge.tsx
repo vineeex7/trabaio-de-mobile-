@@ -17,28 +17,23 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">COMEÇO DA PORRA TODA</ThemedText>
+        <ThemedText type="title">Reinos</ThemedText>
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
-        
         <ThemedText>
-     
-          <ThemedText type="defaultSemiBold">
-
-          </ThemedText>
-     
+          Terra Da Grama: É o lugar onde mora ,Finn, Jake, BMO, Shelby e Neptr e Fern
         </ThemedText>
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
        
         <ThemedText>
-       
+      Reino Doce: Moram lá: Princesa Jujuba(governante), Povo Doce, Mordomo Menta, Lady Iris, Starchy
         </ThemedText>
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
       
         <ThemedText>
-         
+         rggegre
         </ThemedText>
       </ThemedView>
     </ParallaxScrollView>
