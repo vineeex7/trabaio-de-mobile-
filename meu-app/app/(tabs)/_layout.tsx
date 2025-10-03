@@ -11,17 +11,21 @@ import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 
+import { Image } from 'react-native';
+const MyIcon = require('../../assets/images/icons8-gunter-50.png');
+
+
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: '#00FF00',
+        tabBarActiveTintColor: '#00FFFF',
         tabBarInactiveTintColor: '#FFFFFF',
         tabBarStyle: {
           backgroundColor: '#000000',
-          borderTopColor: '#00FF00', 
+          borderTopColor: '#00FFFF', 
           borderTopWidth: 2,
         },
         headerShown: false,
@@ -36,37 +40,42 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Página de Login',
-          tabBarIcon: ({ color }) => <Ionicons name="people" size={24} color="gray" />
+          tabBarIcon: ({ color }) => <Ionicons name="people" size={24} color="lime" />
         }}
       />
       <Tabs.Screen
         name="explore"
         options={{
           title: 'Personagens',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          tabBarIcon: ({ color }) =><Image
+          source={MyIcon}
+          style={{ width: 24, height: 24, tintColor: color }} // o tintColor serve para mudar a cor da imagem se ela for um ícone monocromático
+          resizeMode="contain"
+        />,
         }}
       />
       <Tabs.Screen
       name='jorge'
       options={{
         title: 'Reinos',
-        tabBarIcon: ({ color }) => <MaterialCommunityIcons name="chess-king" size={24} color="gray" />
+        tabBarIcon: ({ color }) => <MaterialCommunityIcons name="chess-king" size={24} color="darkmagenta" />
+      }}
+      />
+       <Tabs.Screen
+      name='emanuel'
+      options={{
+        title: 'Episódios',
+        tabBarIcon: ({ color }) => <Entypo name="video" size={24} color="red" />
       }}
       />
       <Tabs.Screen
       name='vini'
       options={{
         title: 'Curiosidades',
-        tabBarIcon: ({ color }) => <FontAwesome6 name="ellipsis" size={24} color="gray" />
+        tabBarIcon: ({ color }) => <FontAwesome6 name="ellipsis" size={24} color="yellow" />
       }}
       />
-      <Tabs.Screen
-      name='emanuel'
-      options={{
-        title: 'Episódios',
-        tabBarIcon: ({ color }) => <Entypo name="video" size={24} color="gray" />
-      }}
-      />
+     
     </Tabs>
   );
 }
