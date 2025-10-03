@@ -10,9 +10,10 @@ import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
-
 import { Image } from 'react-native';
 const MyIcon = require('../../assets/images/icons8-gunter-50.png');
+
+const Reino = require('../../assets/images/icons8-treasure-map-50.png');
 
 
 export default function TabLayout() {
@@ -58,7 +59,10 @@ export default function TabLayout() {
       name='jorge'
       options={{
         title: 'Reinos',
-        tabBarIcon: ({ color }) => <MaterialCommunityIcons name="chess-king" size={24} color="darkmagenta" />
+        tabBarIcon: ({ color }) => <Image
+        source={Reino}
+        style={{ width: 24, height: 24, tintColor: color }} // o tintColor serve para mudar a cor da imagem se ela for um ícone monocromático
+        resizeMode="contain" />
       }}
       />
        <Tabs.Screen
