@@ -22,7 +22,7 @@ export default function HomeScreen() {
       <ThemedView style={styles.stepContainer}>
         
         <ThemedText>
-     
+     oi
           <ThemedText type="defaultSemiBold">
 
           </ThemedText>
