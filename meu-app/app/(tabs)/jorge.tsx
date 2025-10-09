@@ -7,7 +7,14 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
 export default function HomeScreen() {
-  return (
+  fetch('http://localhost:3000/kingdoms')
+  .then(res => {
+    if (!res.ok) throw new Error('Erro na resposta: ' + res.status);
+    return res.json();
+  })
+  .then(data => console.log(data))
+  .catch(err => console.error('Erro ao buscar dados:', err)); 
+    return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
       headerImage={
