@@ -17,29 +17,37 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">COMEÇO DA PORRA TODA</ThemedText>
+        <ThemedText type="title">EPISODIOS</ThemedText>
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
         
-        <ThemedText>
-     
+        <ThemedText>  Principais episodios de hora da aventura.
           <ThemedText type="defaultSemiBold">
 
           </ThemedText>
      
-        </ThemedText>
+        </ThemedText>1. O Lamento do Rei Gelado
+
+Temporada: 5 | Episódio: 14
+Revela o trágico passado do Rei Gelado e sua relação com a Princesa Jujuba, mostrando um lado mais humano e melancólico do personagem.s
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
        
         <ThemedText>
        
-        </ThemedText>
+        </ThemedText>2. A Despedida de Marceline
+
+Temporada: 6 | Episódio: 25
+Marceline lida com seu relacionamento com o Rei dos Vampiros, seu pai, e canta a música "I'm Just Your Problem", tocando temas de abandono e reconciliação.
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
       
         <ThemedText>
          
-        </ThemedText>
+        </ThemedText> 3. O Último Caderno de Desenhos de Finn
+
+Temporada: 7 | Episódio: 7
+Finn encontra seu caderno de desenhos antigos, refletindo sobre seu crescimento e as mudanças que ele passou ao longo da série.
       </ThemedView>
     </ParallaxScrollView>
   );
