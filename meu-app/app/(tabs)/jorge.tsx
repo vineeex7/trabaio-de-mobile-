@@ -1,5 +1,6 @@
+import React, { useEffect, useState } from 'react';
 import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -7,43 +8,58 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
 export default function HomeScreen() {
-  fetch('http://localhost:3000/kingdoms')
-  .then(res => {
-    if (!res.ok) throw new Error('Erro na resposta: ' + res.status);
-    return res.json();
-  })
-  .then(data => console.log(data))
-  .catch(err => console.error('Erro ao buscar dados:', err)); 
-    return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/background-jorge.png')}
-          style={styles.reactLogo}
-        />
-      }>
+  const [kingdoms, setKingdoms] = useState([]);  // Estado para guardar os dados
+  const [error, setError] = useState(null);      // Estado para guardar erros (opcional)
+  const [loading, setLoading] = useState(true);  // Estado para loading (opcional)
+
+  useEffect(() => {
+    fetch('http://localhost:3000/kingdoms')
+      .then(res => {
+        if (!res.ok) throw new Error('Erro na resposta: ' + res.status);
+        return res.json();
+      })
+      .then(data => {
+        setKingdoms(data);  // Guarda os dados no estado
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Erro ao buscar dados:', err);
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
+
+  return (
+    <ScrollView
+      >
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Reinos</ThemedText>
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText>
-          Terra Da Grama: É o lugar onde mora ,Finn, Jake, BMO, Shelby e Neptr e Fern
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-       
-        <ThemedText>
-      Reino Doce: Moram lá: Princesa Jujuba(governante), Povo Doce, Mordomo Menta, Lady Iris, Starchy
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-      
-        <ThemedText>
-         rggegre
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+
+      {/* Mostrar loading */}
+      {loading && <ThemedText>Carregando...</ThemedText>}
+
+      {/* Mostrar erro */}
+      {error && <ThemedText>Erro: {error}</ThemedText>}
+
+      {/* Se quiser mostrar algo padrão quando não tiver dados */}
+      {!loading && kingdoms.length === 0 && (
+        <ThemedText>Nenhum reino encontrado.</ThemedText>
+      )}
+      {kingdoms.map((kingdom, index) => (
+  <ThemedView key={index} style={styles.stepContainer}>
+    <Image
+      source={{ uri: kingdom.image }}
+      style={styles.kingdomImage}
+      contentFit="cover"
+      transition={1000}
+    />
+    <ThemedText style={styles.kingdomTitle}>{kingdom.name}</ThemedText>
+    <ThemedText>{kingdom.description}</ThemedText>
+  </ThemedView>
+))}
+
+    </ScrollView>
   );
 }
 
@@ -64,5 +80,16 @@ const styles = StyleSheet.create({
     left: 0,
     position: 'absolute',
   },
+  kingdomImage: {
+    width: '100%',
+    height: 150,
+    borderRadius: 8,
+    marginBottom: 8,
+  },
+  kingdomTitle: {
+    fontWeight: 'bold',
+    fontSize: 18,
+    marginBottom: 4,
+  },
+  
 });
-
