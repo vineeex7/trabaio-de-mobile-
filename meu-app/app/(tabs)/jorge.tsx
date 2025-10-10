@@ -73,23 +73,16 @@ const styles = StyleSheet.create({
     gap: 8,
     marginBottom: 8,
   },
-  reactLogo: {
-    height: 600,
-    width: 500,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
   kingdomImage: {
     width: '100%',
     height: 150,
-    borderRadius: 8,
-    marginBottom: 8,
+    borderRadius: 70,
+    marginBottom: 5,
   },
   kingdomTitle: {
     fontWeight: 'bold',
-    fontSize: 18,
-    marginBottom: 4,
+    fontSize: 20,
+    marginBottom: 5,
   },
-  
+
 });
