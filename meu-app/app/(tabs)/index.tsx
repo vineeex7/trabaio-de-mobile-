@@ -22,7 +22,19 @@ export default function HomeScreen() {
       <ThemedView style={styles.stepContainer}>
         
         <ThemedText>
-     oi
+        <form action="/pagina-processa-dados-do-form" method="post">
+     <div>
+      <label htmlFor="nome">Nome:</label>
+      <input type="text" id="nome" name="usuario_nome" />
+     </div>
+     <div>
+       <label htmlFor="email">E-mail:</label>
+       <input type="email" id="email" name="usuario_email" />
+       </div>
+       <div className="button">
+         <button type="submit">Enviar sua mensagem</button>
+      </div>
+     </form>
           <ThemedText type="defaultSemiBold">
 
           </ThemedText>
