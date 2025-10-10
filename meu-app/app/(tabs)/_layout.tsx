@@ -4,6 +4,7 @@ import { Platform } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Entypo from '@expo/vector-icons/Entypo';
 import { HapticTab } from '@/components/HapticTab';
 import { IconSymbol } from '@/components/ui/IconSymbol';
@@ -76,7 +77,7 @@ export default function TabLayout() {
       name='vini'
       options={{
         title: 'Curiosidades',
-        tabBarIcon: ({ color }) => <FontAwesome6 name="ellipsis" size={24} color="yellow" />
+        tabBarIcon: ({ color }) => <FontAwesome name="question" size={24} color="yellow" />
       }}
       />
      
