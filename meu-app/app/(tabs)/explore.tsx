@@ -1,70 +1,82 @@
 import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ScrollView, StyleSheet } from 'react-native';
 
-import { Collapsible } from '@/components/Collapsible';
-import { ExternalLink } from '@/components/ExternalLink';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { IconSymbol } from '@/components/ui/IconSymbol';
 
-export default function TabTwoScreen() {
+export default function CharactersScreen() {
+  const [characters, setCharacters] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('http://localhost:3000/characters') // Alterado para buscar personagens
+      .then(res => {
+        if (!res.ok) throw new Error('Erro na resposta: ' + res.status);
+        return res.json();
+      })
+      .then(data => {
+        setCharacters(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Erro ao buscar dados:', err);
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#D0D0D0', dark: '#353636' }}
-      headerImage={
-        <Image
-        source={require('@/assets/images/antony.png')}
-        style={styles.reactLogo}
-      />
-      }>
+    <ScrollView>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">AQUI COMEÇA OS TEXTO</ThemedText>
-      </ThemedView>    
-        <ThemedText>
-         
-        </ThemedText>
-        <ThemedText>
-         
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/router/introduction">
-          
-        </ExternalLink>
-        <ThemedText>
-        
-        </ThemedText>
-        <Image source={require('@/assets/images/antony.png')} style={{ alignSelf: 'center' }} />
-    
+        <ThemedText type="title">Personagens</ThemedText>
+      </ThemedView>
 
-      
-        <ThemedText>
-          
-          <ThemedText style={{ fontFamily: 'SpaceMono' }}>
-          
-          </ThemedText>
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/versions/latest/sdk/font">
-        </ExternalLink>
-      
-        <ThemedText>
-       
-        </ThemedText>
-        <ExternalLink href="https://docs.expo.dev/develop/user-interface/color-themes/">
-        </ExternalLink>
-    </ParallaxScrollView>
+      {loading && <ThemedText>Carregando...</ThemedText>}
+      {error && <ThemedText>Erro: {error}</ThemedText>}
+      {!loading && characters.length === 0 && (
+        <ThemedText>Nenhum personagem encontrado.</ThemedText>
+      )}
+
+      {characters.map((character, index) => (
+        <ThemedView key={index} style={styles.stepContainer}>
+          <Image
+            source={{ uri: character.image }}
+            style={styles.characterImage}
+            contentFit="cover"
+            transition={1000}
+          />
+          <ThemedText style={styles.characterTitle}>{character.name}</ThemedText>
+          <ThemedText style={styles.characterDescription}>{character.description}</ThemedText>
+        </ThemedView>
+      ))}
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  reactLogo: {
-    height: 600,
-    width: 500,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
   titleContainer: {
-    flexDirection: 'row',
-    gap: 8,
+    marginVertical: 20,
+    alignItems: 'center',
+  },
+  stepContainer: {
+    marginBottom: 20,
+    paddingHorizontal: 16,
+  },
+  characterImage: {
+    width: '100%',
+    height: 200,
+    borderRadius: 8,
+  },
+  characterTitle: {
+    marginTop: 10,
+    fontWeight: 'bold',
+    fontSize: 18,
+  },
+  characterDescription: {
+    marginTop: 5,
+    fontSize: 14,
   },
 });
+  
