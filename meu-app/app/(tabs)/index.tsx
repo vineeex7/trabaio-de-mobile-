@@ -1,5 +1,6 @@
 import { Image } from 'expo-image';
 import { Platform, StyleSheet } from 'react-native';
+import { TextInput, Button, View } from 'react-native';
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
@@ -17,26 +18,39 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">COMEÇO DA PORRA TODA</ThemedText>
+        <ThemedText type="title">Bem vindo! Faça login.</ThemedText>
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
         
+       
+       
+       
+       
+       
+       
+       
         <ThemedText>
         <form action="/pagina-processa-dados-do-form" method="post">
      <div>
       <label htmlFor="nome">Nome:</label>
-      <input type="text" id="nome" name="usuario_nome" />
+      <input type="text" id="nome" name="usuario_nome" required/>
      </div>
      <div>
-       <label htmlFor="email">E-mail:</label>
-       <input type="email" id="email" name="usuario_email" />
+       <label htmlFor="email">Senha:</label>
+       <input type="password" id="email" name="usuario_email" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^\w\s]).{8,}"/>
        </div>
        <div className="button">
-         <button type="submit">Enviar sua mensagem</button>
+         <button type="submit">Registrar</button>
       </div>
      </form>
           <ThemedText type="defaultSemiBold">
 
+          
+          
+          
+          
+          
+          
           </ThemedText>
      
         </ThemedText>
