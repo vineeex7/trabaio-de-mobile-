@@ -18,7 +18,12 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">CURIOSIDADES</ThemedText>
+      <ThemedText 
+  type="title"
+  style={[{ color: '#D9D900' }]} 
+>
+  CURIOSIDADES
+</ThemedText>
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
         
