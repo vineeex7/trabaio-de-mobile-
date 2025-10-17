@@ -29,9 +29,9 @@ export default function HomeScreen() {
 
   return (
     <ScrollView
-      >
+    >
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Reinos</ThemedText>
+        <ThemedText style={styles.text} type="title">Reinos</ThemedText>
       </ThemedView>
 
       {/* Mostrar loading */}
@@ -45,18 +45,18 @@ export default function HomeScreen() {
         <ThemedText>Nenhum reino encontrado.</ThemedText>
       )}
       {kingdoms.map((kingdom, index) => (
-  <ThemedView key={index} style={styles.stepContainer}>
-    <Image
-      source={{ uri: kingdom.image }}
-      style={styles.kingdomImage}
-      contentFit="cover"
-      transition={1000}
-    />
+        <ThemedView key={index} style={styles.stepContainer}>
+          <Image
+            source={{ uri: kingdom.image }}
+            style={styles.kingdomImage}
+            contentFit="cover"
+            transition={1000}
+          />
 
-    <ThemedText style={styles.kingdomTitle}>{kingdom.name}</ThemedText>
-    <ThemedText style={styles.kingdomDescription}>{kingdom.description}</ThemedText>
-  </ThemedView>
-))}
+          <ThemedText style={styles.kingdomTitle}>{kingdom.name}</ThemedText>
+          <ThemedText style={styles.kingdomDescription}>{kingdom.description}</ThemedText>
+        </ThemedView>
+      ))}
 
     </ScrollView>
   );
@@ -64,6 +64,7 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   titleContainer: {
+    fontFamily: "Adventure Time",
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
@@ -87,8 +88,11 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     padding: 10
   },
-  kingdomDescription:{
-fontFamily: 'quicksand'
+  kingdomDescription: {
+    fontFamily: 'quicksand'
+  },
+  text: {
+    fontFamily: 'Adventure'
   }
 
 });
