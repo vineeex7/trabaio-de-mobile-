@@ -13,11 +13,11 @@ export default function HomeScreen() {
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
       headerImage={
         <Image
-          source={require('@/assets/images/background-jorge.png')}
+          source={require('@/assets/images/casa reinos.png')}
           style={styles.reactLogo}
         />
       }>
-      <ThemedView style={styles.titleContainer}>
+      <ThemedView style={styles.titleContainer}> 
       <ThemedText 
   type="title"
   style={[{ color: '#D9D900' }]} 
@@ -118,5 +118,6 @@ const styles = StyleSheet.create({
     left: 0,
     position: 'absolute',
   },
+  
 });
 
