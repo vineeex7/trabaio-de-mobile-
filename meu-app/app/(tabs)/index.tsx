@@ -1,8 +1,6 @@
 import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
-import { TextInput, Button, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -18,7 +16,7 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Bem vindo! Faça login.</ThemedText>
+        <ThemedText type="title">Suporte antes de tudo!</ThemedText>
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
         
@@ -30,27 +28,25 @@ export default function HomeScreen() {
        
        
         <ThemedText>
-        <form action="/pagina-processa-dados-do-form" method="post">
+        <form action="https://formspree.io/f/mwprdgla" method="post">
      <div>
       <label htmlFor="nome">Nome:</label>
       <input type="text" id="nome" name="usuario_nome" required/>
      </div>
      <div>
-       <label htmlFor="email">Senha:</label>
-       <input type="password" id="email" name="usuario_email" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^\w\s]).{8,}"/>
+       <label htmlFor="email">Email:</label>
+       <input type="email" id="email" name="usuario_email" required/>
        </div>
+      <div>
+       <label htmlFor="email">Insira a Ocorrência:</label>
+       <input type="text" id="ocorrido" name="situação_usuário" required/>
+       </div>
+     
        <div className="button">
-         <button type="submit">Registrar</button>
+         <button type="submit">Enviar Requisição de Suporte.</button>
       </div>
      </form>
           <ThemedText type="defaultSemiBold">
-
-          
-          
-          
-          
-          
-          
           </ThemedText>
      
         </ThemedText>
