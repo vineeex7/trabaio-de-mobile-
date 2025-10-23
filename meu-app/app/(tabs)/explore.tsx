@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  View,
-  Text,
+  ActivityIndicator,
   FlatList,
   Image,
-  StyleSheet,
-  ActivityIndicator,
   SafeAreaView,
   StatusBar,
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native';
 
 const AdventureTimeApp = () => {
@@ -128,6 +128,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#333',
     textAlign: 'center',
+    fontFamily: "assets/fonts/Adventure.ttf"
   },
   headerSubtitle: {
     fontSize: 14,

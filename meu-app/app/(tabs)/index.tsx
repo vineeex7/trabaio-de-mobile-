@@ -11,22 +11,14 @@ export default function HomeScreen() {
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
       headerImage={
         <Image
-          source={require('@/assets/images/background-jorge.png')}
+          source={require('../../assets/images/Roberto.png')}
           style={styles.reactLogo}
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Suporte antes de tudo!</ThemedText>
+        <ThemedText type="title">Suporte</ThemedText>
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
-        
-       
-       
-       
-       
-       
-       
-       
         <ThemedText>
         <form action="https://formspree.io/f/mwprdgla" method="post">
      <div>
@@ -38,7 +30,7 @@ export default function HomeScreen() {
        <input type="email" id="email" name="usuario_email" required/>
        </div>
       <div>
-       <label htmlFor="email">Insira a Ocorrência:</label>
+       <label htmlFor="email">Relato</label>
        <input type="text" id="ocorrido" name="situação_usuário" required/>
        </div>
      
@@ -46,26 +38,13 @@ export default function HomeScreen() {
          <button type="submit">Enviar Requisição de Suporte.</button>
       </div>
      </form>
-          <ThemedText type="defaultSemiBold">
+            <ThemedText type="defaultSemiBold">
+            </ThemedText>
           </ThemedText>
-     
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-       
-        <ThemedText>
-       
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-      
-        <ThemedText>
-         
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
-  );
-}
+        </ThemedView>
+      </ParallaxScrollView>
+    );
+  }
 
 const styles = StyleSheet.create({
   titleContainer: {
@@ -78,7 +57,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   reactLogo: {
-    height: 600,
+    height: 250,
     width: 500,
     bottom: 0,
     left: 0,
