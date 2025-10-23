@@ -6,7 +6,6 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
-// Interface para tipar os episódios
 interface Episode {
   id: number;
   slug: string;
@@ -22,7 +21,7 @@ export default function HomeScreen() {
   const [episodes, setEpisodes] = useState<Episode[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Função para buscar os episódios da API
+
   const fetchEpisodes = async () => {
     try {
       const response = await fetch('http://adventure-time-api-lg.vercel.app/api/episodes');
@@ -42,7 +41,7 @@ export default function HomeScreen() {
     fetchEpisodes();
   }, []);
 
-  // Componente para renderizar cada item da lista
+
   const renderEpisodeItem = ({ item }: { item: Episode }) => (
     <ThemedView style={styles.episodeContainer}>
       <ThemedView style={styles.episodeHeader}>
@@ -354,7 +353,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 20,
   },
-  // Estilos para a seção de episódios destacados
+  
   featuredSection: {
     marginBottom: 24,
   },
