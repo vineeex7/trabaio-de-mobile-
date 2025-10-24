@@ -1,6 +1,6 @@
 import { Image } from 'expo-image';
 import { useEffect, useState } from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList, ScrollView, StyleSheet } from 'react-native';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
@@ -65,14 +65,10 @@ export default function HomeScreen() {
   );
 
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('../../assets/images/meu-mundo.jpg')}
-          style={styles.reactLogo}
-        />
-      }>
+    <ScrollView
+      
+      
+      >
       
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">PRINCIPAIS EPISÓDIOS DE HORA DA AVENTURA:</ThemedText>
@@ -279,7 +275,7 @@ export default function HomeScreen() {
           </ThemedText>
         </ThemedView>
       </ThemedView>
-    </ParallaxScrollView>
+    </ScrollView>
   );
 }
 
@@ -354,7 +350,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 20,
   },
-  // Estilos para a seção de episódios destacados
+  
   featuredSection: {
     marginBottom: 24,
   },
