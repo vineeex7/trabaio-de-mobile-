@@ -1,16 +1,10 @@
+import { HapticTab } from '@/components/HapticTab';
+import { useColorScheme } from '@/hooks/useColorScheme';
+import Entypo from '@expo/vector-icons/Entypo';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { Tabs } from 'expo-router';
 import React from 'react';
-import { Platform } from 'react-native';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import Entypo from '@expo/vector-icons/Entypo';
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
 import { Image } from 'react-native';
 const MyIcon = require('../../assets/images/icons8-gunter-50.png');
 
@@ -39,13 +33,6 @@ export default function TabLayout() {
         
       }}>
       <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Página de Login',
-          tabBarIcon: ({ color }) => <Ionicons name="people" size={24} color="lime" />
-        }}
-      />
-      <Tabs.Screen
         name="explore"
         options={{
           title: 'Personagens',
@@ -53,7 +40,7 @@ export default function TabLayout() {
           source={MyIcon}
           style={{ width: 24, height: 24, tintColor: color }} // o tintColor serve para mudar a cor da imagem se ela for um ícone monocromático
           resizeMode="contain"
-        />,
+          />,
         }}
       />
       <Tabs.Screen
@@ -81,6 +68,13 @@ export default function TabLayout() {
       }}
       />
      
+<Tabs.Screen
+  name="index"
+  options={{
+    title: 'Página de Suporte',
+    tabBarIcon: ({ color }) => <Ionicons name="people" size={24} color="lime" />
+  }}
+/>
     </Tabs>
   );
 }

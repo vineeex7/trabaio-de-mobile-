@@ -6,9 +6,9 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
 export default function HomeScreen() {
-  const [kingdoms, setKingdoms] = useState([]);  // Estado para guardar os dados
-  const [error, setError] = useState(null);      // Estado para guardar erros (opcional)
-  const [loading, setLoading] = useState(true);  // Estado para loading (opcional)
+  const [kingdoms, setKingdoms] = useState([]);  
+  const [error, setError] = useState(null);      
+  const [loading, setLoading] = useState(true);  
 
   useEffect(() => {
     fetch('http://localhost:3000/kingdoms')
@@ -17,7 +17,7 @@ export default function HomeScreen() {
         return res.json();
       })
       .then(data => {
-        setKingdoms(data);  // Guarda os dados no estado
+        setKingdoms(data);  
         setLoading(false);
       })
       .catch(err => {

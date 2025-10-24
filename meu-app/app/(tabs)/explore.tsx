@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  View,
-  Text,
+  ActivityIndicator,
   FlatList,
   Image,
-  StyleSheet,
-  ActivityIndicator,
+  ImageBackground,
   SafeAreaView,
   StatusBar,
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native';
 
 const AdventureTimeApp = () => {
@@ -19,11 +20,9 @@ const AdventureTimeApp = () => {
     try {
       setLoading(true);
       const response = await fetch('http://localhost:3001/characters');
-      
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      
       const data = await response.json();
       setCharacters(data);
       setError(null);
@@ -41,11 +40,7 @@ const AdventureTimeApp = () => {
 
   const renderCharacter = ({ item }) => (
     <View style={styles.characterCard}>
-      <Image 
-        source={{ uri: item.thumbnail }} 
-        style={styles.characterImage}
-        
-      />
+      <Image source={{ uri: item.thumbnail }} style={styles.characterImage} />
       <View style={styles.characterInfo}>
         <Text style={styles.characterName}>{item.name}</Text>
         <Text style={styles.characterFullName}>{item.full_name}</Text>
@@ -65,60 +60,74 @@ const AdventureTimeApp = () => {
     </View>
   );
 
+  const backgroundImage = require('../../assets/images/t.jpeg.jpg');
+
   if (loading) {
     return (
-      <View style={styles.centerContainer}>
-        <ActivityIndicator size="large" color="#0000ff" />
-        <Text style={styles.loadingText}>Loading characters...</Text>
-      </View>
+      <ImageBackground source={backgroundImage} style={styles.background} resizeMode="cover">
+        <View style={styles.centerContainer}>
+          <ActivityIndicator size="large" color="#0000ff" />
+          <Text style={styles.loadingText}>Loading characters...</Text>
+        </View>
+      </ImageBackground>
     );
   }
 
   if (error) {
     return (
-      <View style={styles.centerContainer}>
-        <Text style={styles.errorText}>{error}</Text>
-        <Text style={styles.retryText} onPress={fetchCharacters}>
-          Tap to retry
-        </Text>
-      </View>
+      <ImageBackground source={backgroundImage} style={styles.background} resizeMode="cover">
+        <View style={styles.centerContainer}>
+          <Text style={styles.errorText}>{error}</Text>
+          <Text style={styles.retryText} onPress={fetchCharacters}>
+            Tap to retry
+          </Text>
+        </View>
+      </ImageBackground>
     );
   }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="dark-content" />
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>Adventure Time Characters</Text>
-        <Text style={styles.headerSubtitle}>
-          {characters.length} characters found
-        </Text>
-      </View>
-      
-      <FlatList
-        data={characters}
-        renderItem={renderCharacter}
-        keyExtractor={(item) => item.id.toString()}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.listContent}
-      />
-    </SafeAreaView>
+    <ImageBackground source={backgroundImage} style={styles.background} resizeMode="cover">
+      <SafeAreaView style={styles.container}>
+        <StatusBar barStyle="dark-content" />
+        <View style={styles.header}>
+          <Text style={styles.headerTitle}>Adventure Time Characters</Text>
+          <Text style={styles.headerSubtitle}>
+            {characters.length} characters found
+          </Text>
+        </View>
+
+        <FlatList
+          data={characters}
+          renderItem={renderCharacter}
+          keyExtractor={(item) => item.id.toString()}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.listContent}
+        />
+      </SafeAreaView>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+  },
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: 'transparent',
   },
   centerContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
+    backgroundColor: 'rgba(255,255,255,0.85)',
+    margin: 20,
+    borderRadius: 12,
   },
   header: {
-    backgroundColor: 'white',
+    backgroundColor: 'rgba(255,255,255,0.9)',
     padding: 16,
     borderBottomWidth: 1,
     borderBottomColor: '#e0e0e0',
@@ -128,6 +137,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#333',
     textAlign: 'center',
+    fontFamily: 'Adventure',
   },
   headerSubtitle: {
     fontSize: 14,
@@ -140,23 +150,20 @@ const styles = StyleSheet.create({
   },
   characterCard: {
     backgroundColor: 'white',
-    borderRadius: 12,
-    padding: 16,
+    borderRadius: 20,
+    padding: 10,
     marginBottom: 16,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 3.84,
+    shadowColor: 'black',
+    shadowOffset: { width: 10, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
     elevation: 5,
     flexDirection: 'row',
   },
   characterImage: {
     width: 80,
-    height: 80,
-    borderRadius: 8,
+    height: 100,
+    borderRadius: 10,
     marginRight: 16,
   },
   characterInfo: {
@@ -166,10 +173,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     color: '#333',
+    fontFamily: 'Roboto',
   },
   characterFullName: {
     fontSize: 14,
-    color: '#666',
+    color: 'gray',
     marginTop: 2,
   },
   characterSpecie: {
@@ -180,9 +188,10 @@ const styles = StyleSheet.create({
   },
   characterDescription: {
     fontSize: 12,
-    color: '#555',
+    color: 'black',
     marginTop: 8,
     lineHeight: 16,
+    fontFamily: 'Roboto',
   },
   quotesContainer: {
     marginTop: 8,
