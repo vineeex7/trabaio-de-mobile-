@@ -34,13 +34,13 @@ export default function HomeScreen() {
         <ThemedText style={styles.text} type="title">Reinos</ThemedText>
       </ThemedView>
 
-      {/* Mostrar loading */}
+
       {loading && <ThemedText>Carregando...</ThemedText>}
 
-      {/* Mostrar erro */}
+      
       {error && <ThemedText>Erro: {error}</ThemedText>}
 
-      {/* Se quiser mostrar algo padrão quando não tiver dados */}
+      
       {!loading && kingdoms.length === 0 && (
         <ThemedText>Nenhum reino encontrado.</ThemedText>
       )}
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     padding: 10
   },
   kingdomDescription: {
-    fontFamily: 'quicksand'
+    fontFamily: 'Quicksand'
   },
   text: {
     fontFamily: 'Adventure'
